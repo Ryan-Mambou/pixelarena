@@ -47,7 +47,7 @@ module.exports = {
       name: 'mfeLobby',
       filename: 'remoteEntry.js',
       exposes: {
-        './Lobby': './src/components/Lobby.jsx',
+        './Lobby': './src/components/Lobby',
       },
       shared: {
         react: { singleton: true, requiredVersion: '^18.2.0' },

@@ -47,7 +47,7 @@ module.exports = {
       name: 'mfeCart',
       filename: 'remoteEntry.js',
       exposes: {
-        './Cart': './src/components/Cart.jsx',
+        './Cart': './src/components/Cart',
       },
       shared: {
         react: { singleton: true, requiredVersion: '^18.2.0' },

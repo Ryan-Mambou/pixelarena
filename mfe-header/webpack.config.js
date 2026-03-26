@@ -47,7 +47,7 @@ module.exports = {
       name: 'mfeHeader',
       filename: 'remoteEntry.js',
       exposes: {
-        './Navbar': './src/components/Navbar.jsx',
+        './Navbar': './src/components/Navbar',
       },
       shared: {
         react: { singleton: true, requiredVersion: '^18.2.0' },
