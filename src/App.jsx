@@ -14,6 +14,7 @@ function App() {
 
   return (
     <div className="app">
+      <h1>Shell opérationnel</h1>
       <Navbar notifications={notifications} />
       <main className="main-content">
         <Lobby onJoinGame={handleJoinGame} />
