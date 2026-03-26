@@ -1,20 +1,22 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ModuleFederationPlugin } = require("webpack").container;
-const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { ModuleFederationPlugin } = require('webpack').container;
+const path = require('path');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "[name].[contenthash].js",
-    publicPath: "http://localhost:3003/",
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[contenthash].js',
+    publicPath: 'http://localhost:3003/',
     clean: true,
   },
   devServer: {
     port: 3003,
     hot: true,
     historyApiFallback: true,
-    headers: { "Access-Control-Allow-Origin": "*" },
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
   module: {
     rules: [
@@ -22,30 +24,38 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-          options: { presets: ["@babel/preset-env", "@babel/preset-react"] },
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
         },
       },
-      { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
-    alias: { shared: path.resolve(__dirname, "../shared") },
+    extensions: ['.js', '.jsx'],
+    alias: {
+      shared: path.resolve(__dirname, '../shared'),
+    },
   },
   plugins: [
     new ModuleFederationPlugin({
-      // TODO: configurer Module Federation pour exposer le Catalog au Shell
-      name: "mfeCatalog",
-      filename: "remoteEntry.js",
+      name: 'mfeCatalog',
+      filename: 'remoteEntry.js',
       exposes: {
-        "./Catalog": "./src/components/Catalog",
+        './Catalog': './src/components/Catalog.jsx',
       },
       shared: {
-        react: { singleton: true, requiredVersion: "^18.2.0" },
-        "react-dom": { singleton: true, requiredVersion: "^18.2.0" },
+        react: { singleton: true, requiredVersion: '^18.2.0' },
+        'react-dom': { singleton: true, requiredVersion: '^18.2.0' },
       },
     }),
-    new HtmlWebpackPlugin({ template: "./public/index.html" }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
   ],
 };
