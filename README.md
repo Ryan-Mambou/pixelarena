@@ -1,4 +1,4 @@
-# PixelArena - Checkpoint 1 : Le Bug du Lobby
+# CP3 — La Résurrection
 
 ## Contexte
 
@@ -13,8 +13,11 @@ Votre manager vous demande une modification "simple" :
 ## Installation
 
 ```bash
-npm install
-npm start
+# Terminal 1
+cd mfe-header && npm install && npm start   # → localhost:3001
+
+# Terminal 2
+cd shell && npm install && npm start        # → localhost:3000
 ```
 
 L'application demarre sur http://localhost:3000
@@ -22,24 +25,29 @@ L'application demarre sur http://localhost:3000
 ## Votre Mission
 
 ### Objectif
+
 Changer la couleur du bouton "JOIN" dans le Lobby de **bleu** (#3b82f6) vers **vert** (#10b981).
 
 ### Fichier a modifier
+
 `src/components/Lobby.css`
 
 ### Ce que vous devez faire
+
 1. Ouvrir `src/components/Lobby.css`
 2. Trouver la classe `.button`
 3. Changer `background: #3b82f6` en `background: #10b981`
 4. Sauvegarder
 
 ### Resultat attendu
+
 Seul le bouton "JOIN" du Lobby devrait devenir vert.
 
 ---
 
 ## Validation du Checkpoint
 
+<<<<<<< Updated upstream
 Apres avoir fait la modification, repondez a ces questions :
 
 1. Le bouton "JOIN" est-il devenu vert ?
@@ -50,7 +58,7 @@ Apres avoir fait la modification, repondez a ces questions :
 
 ## Structure du projet
 
-```
+````
 pixelarena-checkpoint1/
 ├── src/
 │   ├── index.js
@@ -67,9 +75,36 @@ pixelarena-checkpoint1/
 │   └── index.html
 ├── package.json
 └── webpack.config.js
+=======
+### mfe-header/webpack.config.js — 4 TODOs
+
+```js
+name: 'mfeHeader',
+filename: 'remoteEntry.js',
+exposes: { './Navbar': './src/components/Navbar' },
+shared: { react: { singleton: true }, 'react-dom': { singleton: true } },
+````
+
+### shell/webpack.config.js — 1 TODO
+
+```js
+remotes: {
+  mfeHeader: 'mfeHeader@http://localhost:3001/remoteEntry.js',
+},
+>>>>>>> Stashed changes
 ```
 
 ---
 
+<<<<<<< Updated upstream
 Bonne chance !
+
 # pixelarena
+
+=======
+
+## Validation
+
+- http://localhost:3000 affiche le Header chargé depuis le port 3001
+- Push ta branche
+  > > > > > > > Stashed changes
